@@ -1,0 +1,72 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+    {{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='css/styles.css') }}"
+      xmlns:margin-top="http://www.w3.org/1999/xhtml">
+{% endblock %}
+
+{% block title %} Image Colour Palette Generator {% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 700px;">
+    <div class="row"  style="margin-top:100px;">
+    <h1 class="display-2">Image Colour Palette Generator</h1>
+        <div class="card pt-5">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0 ">
+              <p>"Color! What a deep and mysterious language, the language of dreams."</p>
+              <footer class="blockquote-footer">Paul Gauguin</footer>
+            </blockquote>
+          </div>
+        </div>
+        <div>
+            <p class="text-justify">
+                Welcome to the Image Colour Palette Generator! Choose an image to upload and the algorythm will list the 10 most common colours.
+            </p>
+        </div>
+        <div class="col-md-auto">
+            <title>Upload new File</title>
+                <!--   Upload file section         -->
+              <h3>Upload new File</h3>
+              <form method=post enctype=multipart/form-data>
+                <input type=file name=file>
+                <input type=submit value=Upload>
+              </form>
+                <!--    Show the uploaded image        -->
+            <div>
+                <img src="{{ image_location }}" class="img-fluid rounded mx-auto d-block">
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for key in color_list %}
+                        <th scope="col">{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                {% for number in range(0, 10) %}
+                    <tr>
+                        {% for key in color_list %}
+                         {% if key == "Color" %}
+                            <th style="background-color:{{ color_list[key][number]  }}"></th>
+                         {% else %}
+                            <th>{{ color_list[key][number] }}</th>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% block footer %}
+   <div class="container" style="margin-top:100px;">
+      <div id="footer">
+           <p class="text-center">Copywright 2022, Peter Sas</p>
+     </div>
+  </div>
+   {%- endblock %}
+{% endblock %}

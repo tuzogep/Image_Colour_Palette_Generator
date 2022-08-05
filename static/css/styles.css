@@ -1,0 +1,21 @@
+body {
+  background: url(v960-ning-11.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#footer {
+  ;
+}
+
+.img-fluid {
+    max-width: 100%;
+     height: auto;
+}
+
+.card {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
