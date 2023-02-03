@@ -9,6 +9,10 @@ ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("APP_SECRET_KEY")
 UPLOAD_FOLDER = os.path.join('static', 'uploads')
+# If the folder does not exist, it will create it.
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 app.config[UPLOAD_FOLDER] = UPLOAD_FOLDER
 Bootstrap(app)
 
