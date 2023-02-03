@@ -33,11 +33,12 @@
                 <input type=file name=file>
                 <input type=submit value=Upload>
               </form>
-                <!--    Show the uploaded image        -->
+                <!--    Shows the uploaded image        -->
             <div>
                 <img src="{{ image_location }}" class="img-fluid rounded mx-auto d-block">
             </div>
             <table class="table">
+            <!--    Creates the header of the table    -->
                 <thead>
                     <tr>
                         {% for key in color_list %}
@@ -46,11 +47,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                <!--  Loops through the dictionary to create the body of the table. If the key = "Color", it displays
+                the colors. Else, it displays the value.    -->
                 {% for number in range(0, 10) %}
                     <tr>
                         {% for key in color_list %}
                          {% if key == "Color" %}
-                            <th style="background-color:{{ color_list[key][number]  }}"></th>
+                            <th style="background-color:#{{ color_list[key][number]  }}"></th>
                          {% else %}
                             <th>{{ color_list[key][number] }}</th>
                         {% endif %}
@@ -65,7 +68,7 @@
 {% block footer %}
    <div class="container" style="margin-top:100px;">
       <div id="footer">
-           <p class="text-center">Copywright 2022, Peter Sas</p>
+           <p class="text-center">Copyright © Peter Sas {{ now.year }}</p>
      </div>
   </div>
    {%- endblock %}
